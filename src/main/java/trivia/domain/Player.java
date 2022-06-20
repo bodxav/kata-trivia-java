@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode
-public class Player implements IPlayer{
+public class Player {
     private String name;
     private int nbCoins;
     private boolean isInPenaltyBox;
