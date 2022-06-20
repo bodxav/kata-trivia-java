@@ -87,14 +87,23 @@ public class GameBetter implements IGame {
    }
 
    private void askQuestion() {
-      if (currentCategory() == "Pop")
-         System.out.println(popQuestions.removeFirst());
-      if (currentCategory() == "Science")
-         System.out.println(scienceQuestions.removeFirst());
-      if (currentCategory() == "Sports")
-         System.out.println(sportsQuestions.removeFirst());
-      if (currentCategory() == "Rock")
-         System.out.println(rockQuestions.removeFirst());
+      switch (currentCategory())
+      {
+         case "Pop":
+            System.out.println(popQuestions.removeFirst());
+            break;
+         case "Science":
+            System.out.println(scienceQuestions.removeFirst());
+            break;
+         case "Sports":
+            System.out.println(sportsQuestions.removeFirst());
+            break;
+         case "Rock":
+            System.out.println(rockQuestions.removeFirst());
+            break;
+         default:
+            System.out.println("Unknown question type");
+      }
    }
 
 
@@ -135,7 +144,7 @@ public class GameBetter implements IGame {
 
       } else {
 
-         System.out.println("Answer was corrent!!!!");
+         System.out.println("Answer was correct!!!!");
          purses[currentPlayer]++;
          System.out.println(players.get(currentPlayer)
                             + " now has "
@@ -145,7 +154,6 @@ public class GameBetter implements IGame {
          boolean winner = didPlayerWin();
          currentPlayer++;
          if (currentPlayer == players.size()) currentPlayer = 0;
-
          return winner;
       }
    }
