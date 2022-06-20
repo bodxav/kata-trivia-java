@@ -11,6 +11,7 @@ import static trivia.domain.utils.PenaltyUtils.canGetOutOfPenalty;
 public class Game implements IGame {
 
     private final List<Player> players;
+    private final QuestionService questionService;
 
     private Player current;
 
@@ -57,7 +58,7 @@ public class Game implements IGame {
                 + "'s new location is "
                 + cell.getName());
         System.out.println("The category is " + cell.getCategory());
-        askQuestion();
+        questionService.askQuestion();
     }
 
 
