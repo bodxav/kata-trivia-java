@@ -5,6 +5,11 @@ import java.util.LinkedList;
 
 // REFACTOR ME
 public class GameBetter implements IGame {
+   //TODO define class for player defined by a name, a purse, isInPenaltyBox and a current Cell (another class)
+   //TODO define a class Cell that has a category of question
+   //TODO define a class/interface Question that has a category,a riddle and an answer
+   //TODO define a game that has a list of Cells, a list of Players and a diction of Questions (per category),a currentPlayer
+
    ArrayList players = new ArrayList();
    int[] places = new int[6];
    int[] purses = new int[6];
@@ -31,10 +36,12 @@ public class GameBetter implements IGame {
       return "Rock Question " + index;
    }
 
+
    public boolean isPlayable() {
       return (howManyPlayers() >= 2);
    }
 
+   //Refactor name to make it obvious that we are adding a player
    public boolean add(String playerName) {
       players.add(playerName);
       places[howManyPlayers()] = 0;
@@ -46,6 +53,7 @@ public class GameBetter implements IGame {
       return true;
    }
 
+   //Refactor name to getPlayersCount()
    public int howManyPlayers() {
       return players.size();
    }
@@ -105,8 +113,9 @@ public class GameBetter implements IGame {
             System.out.println("Unknown question type");
       }
    }
-
-
+   //TODO
+   // See if a Cell is defined otherwise
+   // use a switch case and a modulo to determine the type of question to draw from the list
    private String currentCategory() {
       if (places[currentPlayer] == 0) return "Pop";
       if (places[currentPlayer] == 4) return "Pop";
@@ -120,6 +129,8 @@ public class GameBetter implements IGame {
       return "Rock";
    }
 
+
+//Refactor usage of this function --> Imply changing playGame
    public boolean wasCorrectlyAnswered() {
       if (inPenaltyBox[currentPlayer]) {
          if (isGettingOutOfPenaltyBox) {
@@ -152,23 +163,32 @@ public class GameBetter implements IGame {
                             + " Gold Coins.");
 
          boolean winner = didPlayerWin();
+         //If !winner
+
+         //Else
+
+
          currentPlayer++;
          if (currentPlayer == players.size()) currentPlayer = 0;
          return winner;
       }
    }
 
+   //Why always returning true ?
+   //Usage of the function is not clear to me
    public boolean wrongAnswer() {
       System.out.println("Question was incorrectly answered");
       System.out.println(players.get(currentPlayer) + " was sent to the penalty box");
       inPenaltyBox[currentPlayer] = true;
 
+      //TODO use a modulo to find the next player or a linked list
       currentPlayer++;
       if (currentPlayer == players.size()) currentPlayer = 0;
       return true;
    }
 
 
+   //Refactor name to isAWinner
    private boolean didPlayerWin() {
       return !(purses[currentPlayer] == 6);
    }
