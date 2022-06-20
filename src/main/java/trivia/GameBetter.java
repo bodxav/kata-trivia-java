@@ -10,15 +10,15 @@ public class GameBetter implements IGame {
    //TODO define a class/interface Question that has a category,a riddle and an answer
    //TODO define a game that has a list of Cells, a list of Players and a diction of Questions (per category),a currentPlayer
 
-   ArrayList players = new ArrayList();
+   ArrayList<String> players = new ArrayList<>();
    int[] places = new int[6];
    int[] purses = new int[6];
    boolean[] inPenaltyBox = new boolean[6];
 
-   LinkedList popQuestions = new LinkedList();
-   LinkedList scienceQuestions = new LinkedList();
-   LinkedList sportsQuestions = new LinkedList();
-   LinkedList rockQuestions = new LinkedList();
+   LinkedList<String>  popQuestions = new LinkedList<>();
+   LinkedList<String>  scienceQuestions = new LinkedList<>();
+   LinkedList<String>  sportsQuestions = new LinkedList<>();
+   LinkedList<String> rockQuestions = new LinkedList<>();
 
    int currentPlayer = 0;
    boolean isGettingOutOfPenaltyBox;
