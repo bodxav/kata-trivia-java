@@ -1,28 +1,31 @@
 package trivia.domain;
 
-import java.util.LinkedList;
+import java.util.List;
 
 public class BoardFactory {
-    public LinkedList<Cell> getCells(int nbCells)
-    {
-        int i=0;
-        Cell currentCell,previousCell;
-        LinkedList<Cell> cells = new LinkedList<>();
 
-        do {
-            //Determine the category of question Type based on index i and category available.
-
-            //currCell = new Cell(qt,prevCell);
-            //prevCell = currCell;
-            i++;
-        }while(i<nbCells);
+    private final static List<QuestionType> cellsOrder = List.of(
+            QuestionType.POP,
+            QuestionType.SCIENCE,
+            QuestionType.SPORTS,
+            QuestionType.ROCK
+    );
 
 
-        //cells.getFirst().setPreviousCell(currCell);
+    public static Cell getCells() {
 
+        var firsrtCell = new Cell(0, QuestionType.POP);
+        var currentCell = firsrtCell;
+        Cell nextCell;
 
+        for (int i = 1; i < 12; i++) {
+            var type = cellsOrder.get(i % cellsOrder.size());
+            nextCell = new Cell(i, type);
+            currentCell.setNext(nextCell);
+            currentCell = nextCell;
+        }
+        currentCell.setNext(firsrtCell);
 
-
-        return cells;
+        return firsrtCell;
     }
 }

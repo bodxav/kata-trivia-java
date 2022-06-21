@@ -3,6 +3,7 @@ package trivia;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import trivia.domain.GameRefactor;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -10,7 +11,7 @@ import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 
-public class GameTest {
+public class GameRefactorTest {
 	@Test
 	public void caracterizationTest() {
 		// runs 10.000 "random" games to see the output of old and new code mathces
@@ -24,7 +25,7 @@ public class GameTest {
 		if (printExpected) {
 			System.out.println(expectedOutput);
 		}
-		String actualOutput = extractOutput(new Random(seed), new GameBetter());
+		String actualOutput = extractOutput(new Random(seed), new GameRefactor());
 		assertEquals("Change detected for seed " + seed +
 						 ". To breakpoint through it, run this seed alone using the (ignored) test below",
 			expectedOutput, actualOutput);
