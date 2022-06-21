@@ -1,3 +1,7 @@
+
+# REFACTOR VERSION IS IN DOMAIN PACKAGE
+
+
 # Trivia Refactoring Kata
 Arranged by Victor Rentea
 

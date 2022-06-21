@@ -19,11 +19,7 @@ public class QuestionRepository {
     }
 
     public String getNext(){
-        if(lastIndex== questions.size() -1){
-            lastIndex = -1;
-        }
-
-        return questions.get(++lastIndex);
+        return questions.get( (lastIndex++) % questions.size());
     }
 
 }

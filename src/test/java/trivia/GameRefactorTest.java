@@ -64,4 +64,22 @@ public class GameRefactorTest {
 
 		return new String(baos.toByteArray());
 	}
+
+	@Test
+	public void buggyEvidence(){
+
+		var rand = new Random();
+		var aGame = new Game();
+
+			aGame.add("Chet");
+			aGame.add("Pat");
+			aGame.add("Sue");
+
+			do {
+				aGame.roll(rand.nextInt(5) + 1);
+				aGame.wrongAnswer();
+			//until throw
+			} while (true);
+
+	}
 }

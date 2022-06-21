@@ -11,6 +11,7 @@ public class GameRefactor implements IGame {
     private final List<Player> players = new ArrayList<>();
     private final QuestionService questionService;
     private final Cell firstCell;
+    private boolean started = false;
 
     private Player current;
 
@@ -32,12 +33,17 @@ public class GameRefactor implements IGame {
                 .currentCell(firstCell)
                 .build();
 
+        if(!isNewPlayerValid(player)){
+            return false;
+        }
+
+        System.out.println(playerName + " was added");
+        System.out.println("They are player number " + (players.size() + 1));
+
+
         if (current == null) {
             current = player;
         }
-
-        System.out.println(playerName+ " was added");
-        System.out.println("They are player number "+ (players.size() +1));
 
         return players.add(player);
     }
@@ -110,6 +116,10 @@ public class GameRefactor implements IGame {
             next = 0;
         }
         current = players.get(next);
+    }
+
+    private boolean isNewPlayerValid(Player player){
+        return !started && !players.contains(player);
     }
 
 }

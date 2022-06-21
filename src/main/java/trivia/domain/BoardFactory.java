@@ -8,7 +8,8 @@ public class BoardFactory {
             QuestionType.POP,
             QuestionType.SCIENCE,
             QuestionType.SPORTS,
-            QuestionType.ROCK
+            QuestionType.ROCK,
+            QuestionType.GEOGRAPHY
     );
 
 
